@@ -15,7 +15,7 @@
 
     <div>
       <%= link_to "Edit", edit_discussion_path(discussion) %> |
-      <%= link_to "Delete", discussion, method: :delete, data: { confirm: "Are you sure?" } %>
+      <%= link_to "Delete", discussion, data: { turbo_confirm: "Are you sure?", turbo_method: :delete } %>
     </div>
   </div>
 <% end %>

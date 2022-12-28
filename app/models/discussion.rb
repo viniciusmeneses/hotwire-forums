@@ -10,6 +10,8 @@ class Discussion < ApplicationRecord
 
   accepts_nested_attributes_for :posts
 
+  scope :pinned_first, -> { order(pinned: :desc, updated_at: :desc) }
+
   # https://github.com/hotwired/turbo-rails/blob/main/app/models/concerns/turbo/broadcastable.rb
   after_create_commit -> { broadcast_prepend_to "discussions" }
   after_update_commit -> { broadcast_replace_to "discussions" }

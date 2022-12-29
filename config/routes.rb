@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :categories
 
   resources :discussions do
-    resources :posts, only: [:create, :show, :edit, :update, :destroy], module: :discussions
+    resources :posts, only: %i[create show edit update destroy], module: :discussions
+    resources :notifications, only: %i[create], module: :discussions
 
     collection do
       get 'categories/:id', to: 'categories/discussions#index', as: :category

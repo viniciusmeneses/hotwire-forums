@@ -3,7 +3,7 @@
 <p><%= discussion.subscribed_reason(user) %></p>
 
 <% if discussion.subscribed?(user) %>
-  <%= button_to "Unsubscribe", authenticated_root_path, class: "btn btn-primary btn-sm" %>
+  <%= button_to "Unsubscribe", discussion_notifications_path(discussion), class: "btn btn-primary btn-sm" %>
 <% else %>
-  <%= button_to "Subscribe", authenticated_root_path, class: "btn btn-primary btn-sm" %>
+  <%= button_to "Subscribe", discussion_notifications_path(discussion), class: "btn btn-primary btn-sm" %>
 <% end %>

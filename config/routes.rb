@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :categories
   devise_for :users
-  root to: 'main#index'
+
+  resources :categories
 
   resources :discussions do
     resources :posts, only: [:create, :show, :edit, :update, :destroy], module: :discussions
@@ -9,5 +9,13 @@ Rails.application.routes.draw do
     collection do
       get 'categories/:id', to: 'categories/discussions#index', as: :category
     end
+  end
+
+  unauthenticated do
+    root to: 'main#index', as: :unauthenticated_root
+  end
+
+  authenticated do
+    root to: 'discussions#index', as: :authenticated_root
   end
 end
